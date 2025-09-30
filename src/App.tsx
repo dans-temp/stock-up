@@ -2,9 +2,9 @@ import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/global/NavBar/NavBar';
-import Home from './components/pages/Home';
-import Leaderboard from './components/pages/Leaderboard';
-import Rules from './components/pages/Rules';
+import Home from './components/pages/Home/Home';
+import Leaderboard from './components/pages/Leaderboard/Leaderboard';
+import Rules from './components/pages/Rules/Rules';
 
 function App() {
   return (

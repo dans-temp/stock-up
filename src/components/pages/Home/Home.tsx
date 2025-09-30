@@ -1,0 +1,31 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Home.css';
+
+function Home() {
+  return (
+    <div className="page-container">
+      <div className="home-container">
+        <h1 className="app-title">Stock-Up</h1>
+        
+        <div className="logo-placeholder">
+          <div className="placeholder-icon">📈</div>
+          <span className="placeholder-text">App Logo</span>
+        </div>
+        
+        <p className="slogan">Compete. Invest. Win.</p>
+        
+        <div className="action-buttons">
+          <Link to="/rules" className="home-button rules-button">
+            � View Rules
+          </Link>
+          <Link to="/leaderboard" className="home-button leaderboard-button">
+            🏆 See Leaderboard
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Home;

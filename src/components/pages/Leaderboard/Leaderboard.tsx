@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import StockGraph from '../global/StockGraph/StockGraph';
+import StockGraph from '../../global/StockGraph/StockGraph';
+import './Leaderboard.css';
 
 const users = [
   { name: "Dan", stocks: ['AAPL', 'MSFT', 'NVDA', 'TSLA', 'AMZN'] },
