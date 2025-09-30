@@ -17,10 +17,10 @@ function Home() {
         
         <div className="action-buttons">
           <Link to="/rules" className="home-button rules-button">
-            � View Rules
+            � Rules
           </Link>
           <Link to="/leaderboard" className="home-button leaderboard-button">
-            🏆 See Leaderboard
+            🏆 Leaderboard
           </Link>
         </div>
       </div>

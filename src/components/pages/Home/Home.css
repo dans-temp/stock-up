@@ -43,14 +43,7 @@
   align-items: center;
   justify-content: center;
   margin: 2rem 0;
-  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-}
-
-.logo-placeholder:hover {
-  transform: scale(1.05);
-  border-color: rgba(255, 187, 0, 0.6);
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .placeholder-icon {
@@ -92,7 +85,7 @@
   border-radius: 12px;
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  min-width: 180px;
+  min-width: 240px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

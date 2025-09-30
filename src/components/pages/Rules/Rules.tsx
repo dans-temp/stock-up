@@ -15,9 +15,9 @@ function Rules() {
         <div className="rules-section">
           <h2 className="section-title">🏆 Prizes</h2>
           <ul className="prize-list">
-            <li><strong>1st Place:</strong> Wins the entire prize pool (minus 2nd place's entry fee).</li>
-            <li><strong>2nd Place:</strong> Gets their $20 back.</li>
-            <li><strong>Last Place:</strong> Must buy 1st place a beer 🍺.</li>
+            <li><strong>🏆 1st Place:</strong> Wins the entire prize pool (minus 2nd place's entry fee).</li>
+            <li><strong>🥈 2nd Place:</strong> Gets their $20 back.</li>
+            <li><strong>🗑 Last Place:</strong> Must buy 1st place a beer 🍺.</li>
           </ul>
         </div>
 

@@ -79,11 +79,6 @@
   border-radius: 0 8px 8px 0;
 }
 
-.prize-list li::before {
-  content: "🏆";
-  color: #FFBB00;
-}
-
 .eligible-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
