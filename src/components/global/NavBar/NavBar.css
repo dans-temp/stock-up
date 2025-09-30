@@ -117,7 +117,6 @@
 
 .dropdown-menu.show {
   height: 200px;
-  display: flex;
 }
 
 .dropdown-menu .navbar-link {
@@ -139,12 +138,16 @@
 }
 
 @media (max-width: 650px) {
+    .navbar {
+      padding: 30px 0px;
+    }
+    
   .navbar-container {
     justify-content: flex-start;
     gap: 1rem;
   }
   
-  .navbar-link:not(.mobile-visible) {
+  .navbar-container .navbar-link {
     display: none;
   }
   
@@ -155,5 +158,9 @@
   .dropdown-menu {
     width: 100%;
     display: flex;
+  }
+  
+  .dropdown-menu .navbar-link {
+    display: block;
   }
 }

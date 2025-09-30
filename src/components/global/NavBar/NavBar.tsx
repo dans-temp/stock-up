@@ -4,14 +4,21 @@ import './NavBar.css';
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    setClicked(!clicked);
   };
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setClicked(false);
   };
 
   return (
@@ -39,7 +46,7 @@ function NavBar() {
       
       {/* Mobile hamburger menu */}
       <div 
-        className={`hamburger ${isMenuOpen ? 'clicked' : ''}`}
+        className={`hamburger ${clicked ? 'clicked' : ''}`}
         onClick={toggleMenu}
       >
         <div className="line"></div>
@@ -52,21 +59,21 @@ function NavBar() {
         <Link 
           to="/" 
           className={`navbar-link ${isActive('/') ? 'primary' : ''}`}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
         >
           Home
         </Link>
         <Link 
           to="/leaderboard" 
           className={`navbar-link ${isActive('/leaderboard') ? 'primary' : ''}`}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
         >
           Leaderboard
         </Link>
         <Link 
           to="/rules" 
           className={`navbar-link ${isActive('/rules') ? 'primary' : ''}`}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
         >
           Rules
         </Link>
