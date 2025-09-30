@@ -38,7 +38,6 @@ interface StockGraphProps {
   shorted?: boolean;
 }
 
-
 const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shorted }) => {
   const [range, setRange] = useState('sept1');
   const [data, setData] = useState<any[]>([]);
@@ -95,7 +94,6 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
     }
   }
 
-
   useEffect(() => {
     if (!sept1InvestmentValueSet.current && range === 'sept1' && percentChange !== null) {
       const value = 20 * (1 + percentChange / 100);
@@ -113,7 +111,7 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
       {sept1InvestmentValue !== null && (
         <div style={{
           textAlign: 'center',
-          fontSize: '2.1rem',
+          fontSize: '1.4rem',
           fontWeight: 600,
           color: sept1InvestmentValue >= 20 ? 'var(--color-green)' : 'var(--color-red)',
           marginBottom: '0.2rem',
@@ -131,10 +129,10 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
         {percentChange !== null && (
           <div style={{
             textAlign: 'center',
-            fontSize: '2rem',
+            fontSize: '1.3rem',
             fontWeight: 600,
             color: isUp ? 'var(--color-green)' : 'var(--color-red)',
-            marginBottom: '0.5rem',
+            marginBottom: '0.3rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -158,13 +156,13 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
           {loading && <p>Loading chart...</p>}
           {error && <p className="stock-graph-error">{error}</p>}
           {!loading && !error && data.length > 0 && (
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={150}>
+              <LineChart data={data} margin={{ top: 5, right: 15, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                <XAxis dataKey="time" minTickGap={20} tick={{ fill: '#fff', fontSize: 12 }} />
-                <YAxis domain={['auto', 'auto']} tick={{ fill: '#fff', fontSize: 12 }} />
+                <XAxis dataKey="time" minTickGap={15} tick={{ fill: '#fff', fontSize: 10 }} />
+                <YAxis domain={['auto', 'auto']} tick={{ fill: '#fff', fontSize: 10 }} />
                 <Tooltip contentStyle={{ background: '#333', border: 'none', color: '#fff' }} />
-                <Line type="monotone" dataKey="price" stroke="#61dafb" dot={false} strokeWidth={2} />
+                <Line type="monotone" dataKey="price" stroke="#61dafb" dot={false} strokeWidth={1.5} />
               </LineChart>
             </ResponsiveContainer>
           )}

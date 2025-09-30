@@ -5,10 +5,15 @@ import './Leaderboard.css';
 const users = [
   { name: "Dan", stocks: ['AAPL', 'MSFT', 'NVDA', 'TSLA', 'AMZN'] },
   { name: "Lionel", stocks: ['GOOGL', 'META', 'NFLX', 'BABA', 'AMD'] },
+  { name: "Yiming", stocks: ['SPOT', 'SHOP', 'ICE', 'ROKU', 'PLTR'] },
+  { name: "Raghav", stocks: ['CRM', 'ADBE', 'NOW', 'SNOW', 'DDOG'] },
+  { name: "Matt", stocks: ['UBER', 'LYFT', 'ABNB', 'DASH', 'COIN'] },
+  { name: "Liyang", stocks: ['ZM', 'DOCU', 'CRWD', 'ZS', 'OKTA'] },
 ];
 
 function Leaderboard() {
   const [portfolios, setPortfolios] = useState<{ [user: string]: { [symbol: string]: number } }>({});
+  const [expandedUser, setExpandedUser] = useState<string | null>(null);
 
   function handlePortfolioValue(user: string, symbol: string, value: number | null) {
     setPortfolios(prev => ({
@@ -25,6 +30,10 @@ function Leaderboard() {
     }));
   }
 
+  function toggleUserExpansion(userName: string) {
+    setExpandedUser(prev => prev === userName ? null : userName);
+  }
+
   const leaderboard = users.map(user => {
     const total = Object.values(portfolios[user.name] || {}).reduce((sum, v) => sum + v, 0);
     return {
@@ -37,23 +46,46 @@ function Leaderboard() {
 
   return (
     <div className="page-container">
-      <h1>Leaderboard</h1>
-      {leaderboard.map(person => (
-        <div key={person.name} style={{ marginBottom: '2.5rem', width: '100%' }}>
-          <p style={{ fontWeight: 600, fontSize: '1.5rem', margin: 0 }}>{person.name}'s Stocks</p>
-          {person.stocks.map((symbol, idx) => (
-            <StockGraph
-              key={symbol}
-              symbol={symbol}
-              onInvestmentValue={value => person.handleValue(symbol, value)}
-              shorted={idx === person.stocks.length - 1}
-            />
+      <div className="leaderboard-container">
+        <h1 className="leaderboard-title">🏆 Leaderboard</h1>
+        <div className="competitors-grid">
+          {leaderboard.map((person, index) => (
+            <div key={person.name} className={`competitor-card rank-${index + 1}`}>
+              <div 
+                className="competitor-header clickable" 
+                onClick={() => toggleUserExpansion(person.name)}
+              >
+                <div className="rank-badge">#{index + 1}</div>
+                <h2 className="competitor-name">{person.name}</h2>
+                <div className="portfolio-total">
+                  <span className="total-label">Portfolio Total:</span>
+                  <span className={`total-value ${person.total >= 100 ? 'profit' : 'loss'}`}>
+                    ${person.total.toFixed(2)}
+                  </span>
+                </div>
+                <div className="expand-indicator">
+                  {expandedUser === person.name ? '▼' : '▶'}
+                </div>
+              </div>
+              {expandedUser === person.name && (
+                <div className="stocks-section">
+                  <h3 className="stocks-title">Portfolio</h3>
+                  <div className="stocks-grid">
+                    {person.stocks.map((symbol, idx) => (
+                      <StockGraph
+                        key={symbol}
+                        symbol={symbol}
+                        onInvestmentValue={value => person.handleValue(symbol, value)}
+                        shorted={idx === person.stocks.length - 1}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
-          <p style={{ fontWeight: 700, fontSize: '1.3rem', marginTop: '1rem' }}>
-            Portfolio Total: <span style={{ color: person.total >= 100 ? 'var(--color-green)' : 'var(--color-red)' }}>${person.total.toFixed(2)}</span>
-          </p>
         </div>
-      ))}
+      </div>
     </div>
   );
 }

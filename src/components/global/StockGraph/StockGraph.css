@@ -1,12 +1,12 @@
 
 .stock-graph-container {
-  width: 90vw;
-  max-width: 700px;
-  min-height: 350px;
+  width: 70vw;
+  max-width: 600px;
+  min-height: 175px;
   background: #222;
   border-radius: 8px;
-  padding: 16px;
-  margin: 1rem auto;
+  padding: 12px;
+  margin: 0.5rem auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -19,22 +19,24 @@
 
 .stock-graph-symbol {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #fff;
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   flex-shrink: 0;
 }
 
 .stock-graph-range-buttons {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .stock-graph-range-buttons button {
-  margin: 0 0.25rem;
-  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  padding: 0.4rem 0.8rem;
   background: #444;
   color: #fff;
   border: none;
@@ -43,6 +45,10 @@
   font-weight: normal;
   transition: background 0.2s, color 0.2s;
   font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 11;
+  white-space: nowrap;
 }
 
 .stock-graph-range-buttons button:hover {
@@ -58,7 +64,7 @@
 .stock-graph-chart-area {
   width: 100%;
   flex: 1 1 auto;
-  min-height: 300px;
+  min-height: 150px;
   display: flex;
   align-items: stretch;
 }
