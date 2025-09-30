@@ -2,7 +2,7 @@ import React from 'react';
 
 function Rules() {
   return (
-    <div style={{ padding: '2rem', color: 'white' }}>
+    <div className="page-container">
       <h1>Game Rules</h1>
       <div style={{ maxWidth: '800px', lineHeight: '1.6' }}>
         <h2>How to Play</h2>

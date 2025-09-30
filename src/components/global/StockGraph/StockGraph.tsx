@@ -3,7 +3,7 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import { fetchYahooChartData } from '../../../functions/api_calls';
-import './stock-graph.css';
+import './StockGraph.css';
 
 const RANGES = [
   { label: 'Sept 1', value: 'sept1' },

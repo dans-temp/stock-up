@@ -1,20 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 .navbar {
-  background: #282c34;
-  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0px;
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 100%;
   border-bottom: 1px solid #444;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 4rem;
+  padding: 0 2rem;
 }
 
 .navbar-link {
-  color: #61dafb;
+  font-size: 24px;
+  font-weight: 600;
   text-decoration: none;
+  color: beige;
+  transition: color 0.2s ease-in-out;
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
 }
 
 .navbar-link.primary {
-  font-weight: bold;
+  color: #FFBB00;
+  font-weight: 800;
+}
+
+.navbar-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background-color: #FFBB00;
+  transition: width 0.4s, background-color 0.4s ease-in-out;
+  margin-top: 4px;
 }
 
 .navbar-link:hover {
-  color: #21a9c7;
+  color: beige;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+  background-color: beige;
+}
+
+.navbar-link.primary::after {
+  background-color: #FFBB00;
+}
+
+.navbar-link.primary:hover::after {
+  background-color: beige;
+}
+
+/* Mobile hamburger menu styles */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  position: absolute;
+  right: 2rem;
+}
+
+.line {
+  width: 30px;
+  height: 4px;
+  background-color: #FFBB00;
+  margin: 3px 0;
+  transition: transform 0.4s ease;
+}
+
+.hamburger.clicked .line:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.clicked .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.clicked .line:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  flex-direction: column;
+  display: none;
+  height: 0px;
+  overflow: hidden;
+  text-align: center;
+  transition: height 0.5s ease;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.dropdown-menu.show {
+  height: 200px;
+  display: flex;
+}
+
+.dropdown-menu .navbar-link {
+  padding: 1rem 0;
+  font-size: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar-container {
+    gap: 2.5rem;
+    padding: 0 1rem;
+  }
+  
+  .navbar-link {
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar-container {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  
+  .navbar-link:not(.mobile-visible) {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .dropdown-menu {
+    width: 100%;
+    display: flex;
+  }
 }

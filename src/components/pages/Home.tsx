@@ -2,7 +2,7 @@ import React from 'react';
 
 function Home() {
   return (
-    <div style={{ padding: '2rem', color: 'white', textAlign: 'center' }}>
+    <div className="page-container">
       <h1>Welcome to Stock-Up!</h1>
       <div style={{ maxWidth: '600px', margin: '0 auto', lineHeight: '1.8' }}>
         <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
