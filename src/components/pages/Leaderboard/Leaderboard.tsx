@@ -5,10 +5,10 @@ import './Leaderboard.css';
 const users = [
   { name: "Dan", stocks: ['AAPL', 'MSFT', 'NVDA', 'TSLA', 'AMZN'] },
   { name: "Lionel", stocks: ['GOOGL', 'META', 'NFLX', 'BABA', 'AMD'] },
-  { name: "Yiming", stocks: ['SPOT', 'SHOP', 'ICE', 'ROKU', 'PLTR'] },
-  { name: "Raghav", stocks: ['CRM', 'ADBE', 'NOW', 'SNOW', 'DDOG'] },
-  { name: "Matt", stocks: ['UBER', 'LYFT', 'ABNB', 'DASH', 'COIN'] },
-  { name: "Liyang", stocks: ['ZM', 'DOCU', 'CRWD', 'ZS', 'OKTA'] },
+  // { name: "Yiming", stocks: ['SPOT', 'SHOP', 'ICE', 'ROKU', 'PLTR'] },
+  // { name: "Raghav", stocks: ['CRM', 'ADBE', 'NOW', 'SNOW', 'DDOG'] },
+  // { name: "Matt", stocks: ['UBER', 'LYFT', 'ABNB', 'DASH', 'COIN'] },
+  // { name: "Liyang", stocks: ['ZM', 'DOCU', 'CRWD', 'ZS', 'OKTA'] },
 ];
 
 function Leaderboard() {
@@ -68,7 +68,7 @@ function Leaderboard() {
                 </div>
               </div>
               {expandedUser === person.name && (
-                <div className="stocks-section">
+                <div className="stocks-section visible">
                   <h3 className="stocks-title">Portfolio</h3>
                   <div className="stocks-grid">
                     {person.stocks.map((symbol, idx) => (
@@ -80,6 +80,18 @@ function Leaderboard() {
                       />
                     ))}
                   </div>
+                </div>
+              )}
+              {expandedUser !== person.name && (
+                <div className="stocks-section hidden">
+                  {person.stocks.map((symbol, idx) => (
+                    <StockGraph
+                      key={symbol}
+                      symbol={symbol}
+                      onInvestmentValue={value => person.handleValue(symbol, value)}
+                      shorted={idx === person.stocks.length - 1}
+                    />
+                  ))}
                 </div>
               )}
             </div>

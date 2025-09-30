@@ -13,7 +13,7 @@ function Home() {
           <span className="placeholder-text">App Logo</span>
         </div>
         
-        <p className="slogan">Compete. Invest. Win.</p>
+        <p className="slogan">Invest. Compete. Win.</p>
         
         <div className="action-buttons">
           <Link to="/rules" className="home-button rules-button">
