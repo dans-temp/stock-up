@@ -1,0 +1,60 @@
+
+.stock-graph-container {
+  width: 90vw;
+  max-width: 700px;
+  min-height: 350px;
+  background: #222;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.stock-graph-symbol {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.stock-graph-range-buttons {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.stock-graph-range-buttons button {
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: normal;
+  transition: background 0.2s, color 0.2s;
+}
+
+.stock-graph-range-buttons button.active {
+  background: #61dafb;
+  color: #222;
+  font-weight: bold;
+}
+
+.stock-graph-chart-area {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 300px;
+  display: flex;
+  align-items: stretch;
+}
+
+.stock-graph-error {
+  color: var(--color-red);
+  font-size: 1rem;
+}
