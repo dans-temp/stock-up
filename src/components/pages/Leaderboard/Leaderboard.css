@@ -12,10 +12,15 @@
   font-weight: 800;
   text-align: center;
   margin-bottom: 3rem;
+  background: -webkit-linear-gradient(135deg, #FFD700, #FFA500, #FF6B6B);
+  background: -moz-linear-gradient(135deg, #FFD700, #FFA500, #FF6B6B);
+  background: -o-linear-gradient(135deg, #FFD700, #FFA500, #FF6B6B);
   background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B6B);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
   background-size: 300% 300%;
   animation: titleShine 4s ease-in-out infinite;
   text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
@@ -38,6 +43,10 @@
 }
 
 .competitor-card {
+  background: rgba(40, 44, 52, 0.95);
+  background: -webkit-linear-gradient(145deg, rgba(40, 44, 52, 0.95), rgba(33, 37, 43, 0.95));
+  background: -moz-linear-gradient(145deg, rgba(40, 44, 52, 0.95), rgba(33, 37, 43, 0.95));
+  background: -o-linear-gradient(145deg, rgba(40, 44, 52, 0.95), rgba(33, 37, 43, 0.95));
   background: linear-gradient(145deg, rgba(40, 44, 52, 0.95), rgba(33, 37, 43, 0.95));
   border-radius: 20px;
   padding: 2rem;
@@ -57,7 +66,7 @@
   right: 0;
   bottom: 0;
   border-radius: 20px;
-  padding: 2px;
+  padding: 5px;
   background: linear-gradient(45deg, #FFD700, #FF6B6B, #4ECDC4, #45B7D1);
   background-size: 400% 400%;
   animation: borderGlow 6s ease infinite;
@@ -123,6 +132,10 @@
 }
 
 .rank-badge {
+  background: #FFBB00;
+  background: -webkit-linear-gradient(135deg, #FFBB00, #FF8C00);
+  background: -moz-linear-gradient(135deg, #FFBB00, #FF8C00);
+  background: -o-linear-gradient(135deg, #FFBB00, #FF8C00);
   background: linear-gradient(135deg, #FFBB00, #FF8C00);
   color: #000;
   font-weight: 800;
@@ -135,16 +148,28 @@
 }
 
 .rank-1 .rank-badge {
+  background: #FFD700;
+  background: -webkit-linear-gradient(135deg, #FFD700, #FFA500);
+  background: -moz-linear-gradient(135deg, #FFD700, #FFA500);
+  background: -o-linear-gradient(135deg, #FFD700, #FFA500);
   background: linear-gradient(135deg, #FFD700, #FFA500);
   box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
 }
 
 .rank-2 .rank-badge {
+  background: #C0C0C0;
+  background: -webkit-linear-gradient(135deg, #C0C0C0, #A8A8A8);
+  background: -moz-linear-gradient(135deg, #C0C0C0, #A8A8A8);
+  background: -o-linear-gradient(135deg, #C0C0C0, #A8A8A8);
   background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
   box-shadow: 0 5px 15px rgba(192, 192, 192, 0.4);
 }
 
 .rank-3 .rank-badge {
+  background: #CD7F32;
+  background: -webkit-linear-gradient(135deg, #CD7F32, #B8860B);
+  background: -moz-linear-gradient(135deg, #CD7F32, #B8860B);
+  background: -o-linear-gradient(135deg, #CD7F32, #B8860B);
   background: linear-gradient(135deg, #CD7F32, #B8860B);
   box-shadow: 0 5px 15px rgba(205, 127, 50, 0.4);
 }
@@ -152,6 +177,10 @@
 .rank-4 .rank-badge,
 .rank-5 .rank-badge,
 .rank-6 .rank-badge {
+  background: #ffffff;
+  background: -webkit-linear-gradient(135deg, #ffffff, #e0e0e0);
+  background: -moz-linear-gradient(135deg, #ffffff, #e0e0e0);
+  background: -o-linear-gradient(135deg, #ffffff, #e0e0e0);
   background: linear-gradient(135deg, #ffffff, #e0e0e0);
   color: #333;
   box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
