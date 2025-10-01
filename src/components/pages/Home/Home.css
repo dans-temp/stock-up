@@ -136,12 +136,13 @@
 /* Responsive design */
 @media (min-width: 1400px) {
   .app-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    margin-bottom: 0rem;
   }
   
   .logo-container {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 200px;
+    max-height: 200px;
   }
   
   .slogan {
@@ -152,6 +153,10 @@
     font-size: 1rem;
     padding: 0.8rem 2rem;
     min-width: 200px;
+  }
+
+  .home-container {
+    padding: 1rem;
   }
 }
 

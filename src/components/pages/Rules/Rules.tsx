@@ -6,12 +6,7 @@ function Rules() {
   return (
     <div className="page-container">
       <div className="rules-container">
-        <h1 className="rules-title">Rules</h1>
-        
-        <div className="rules-barrel-container">
-          <img src={rulesBarrelImage} alt="Rules Mascot" className="rules-barrel-image" />
-        </div>
-        
+        <h1 className="rules-title">Rules</h1>        
         <div className="rules-section">
           <h2 className="section-title">💰 Entry Fee</h2>
           <p>Everyone contributes $20 to enter the challenge.</p>
@@ -29,6 +24,10 @@ function Rules() {
         <div className="rules-section">
           <h2 className="section-title">💸 Simulated Investing</h2>
           <p>We'll be using pretend money for tracking performance, but if you're feeling bold, you can invest with real money too, and put your money where your mouth is!</p>
+        </div>
+
+        <div className="rules-barrel-container">
+          <img src={rulesBarrelImage} alt="Rules Mascot" className="rules-barrel-image" />
         </div>
 
         <div className="rules-section">
