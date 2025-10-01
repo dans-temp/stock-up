@@ -55,11 +55,12 @@
 }
 
 .stock-graph-range-buttons button:hover {
-  background: #555;
+  background: #f5f5f5;
+  color: #222;
 }
 
 .stock-graph-range-buttons button.active {
-  background: #61dafb;
+  background: #f5f5f5;
   color: #222;
   font-weight: bold;
 }

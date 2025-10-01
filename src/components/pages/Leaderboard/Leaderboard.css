@@ -249,12 +249,16 @@
 }
 
 .competitor-header.clickable:hover .expand-indicator {
-  color: #61dafb;
+  color: #f5f5f5;
   transform: scale(1.2);
 }
 
 .stock-graph-range-buttons button.active {
   background: #FFBB00;
+}
+
+.stock-graph-range-buttons button.active:hover {
+  background: #f5f5f5;
 }
 
 .total-label {
@@ -340,7 +344,7 @@
 .stocks-title {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #61dafb;
+  color: #f5f5f5;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -352,6 +356,13 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.stock-divider {
+  height: 1px;
+  background-color: #f5f5f5;
+  margin: 0.5rem 0;
+  opacity: 0.3;
 }
 
 /* Responsive design */

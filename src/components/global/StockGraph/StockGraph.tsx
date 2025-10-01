@@ -161,7 +161,10 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
                 <CartesianGrid strokeDasharray="3 3" stroke="#444" />
                 <XAxis dataKey="time" minTickGap={15} tick={{ fill: '#fff', fontSize: 10 }} />
                 <YAxis domain={['auto', 'auto']} tick={{ fill: '#fff', fontSize: 10 }} />
-                <Tooltip contentStyle={{ background: '#333', border: 'none', color: '#fff' }} />
+                <Tooltip 
+                  contentStyle={{ background: '#333', border: 'none', color: '#fff' }}
+                  formatter={(value: number) => [`$${value.toFixed(2)}`, 'Price']}
+                />
                 <Line type="monotone" dataKey="price" stroke="#FFD700" dot={false} strokeWidth={1.5} />
               </LineChart>
             </ResponsiveContainer>

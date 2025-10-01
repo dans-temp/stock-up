@@ -19,7 +19,7 @@
   margin-bottom: 3rem;
   letter-spacing: -1px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #FFD700, #FFA500, #C0C0C0, #E6E6FA);
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FFBB00, #FFA500);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -108,16 +108,16 @@
 }
 
 .rules-button {
-  background: linear-gradient(135deg, rgba(97, 218, 251, 0.15), rgba(97, 218, 251, 0.05));
-  color: #61dafb;
-  border-color: rgba(97, 218, 251, 0.3);
+  background: linear-gradient(135deg, rgba(245, 245, 245, 0.15), rgba(245, 245, 245, 0.05));
+  color: #f5f5f5;
+  border-color: rgba(245, 245, 245, 0.3);
 }
 
 .rules-button:hover {
-  background: linear-gradient(135deg, rgba(97, 218, 251, 0.25), rgba(97, 218, 251, 0.15));
-  border-color: #61dafb;
+  background: linear-gradient(135deg, rgba(245, 245, 245, 0.25), rgba(245, 245, 245, 0.15));
+  border-color: #f5f5f5;
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(97, 218, 251, 0.3);
+  box-shadow: 0 8px 25px rgba(245, 245, 245, 0.3);
 }
 
 .leaderboard-button {

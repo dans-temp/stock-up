@@ -67,32 +67,22 @@ function Leaderboard() {
                   {expandedUser === person.name ? '▼' : '▶'}
                 </div>
               </div>
-              {expandedUser === person.name && (
-                <div className="stocks-section visible">
-                  <div className="stocks-grid">
-                    {person.stocks.map((symbol, idx) => (
+              <div className={`stocks-section ${expandedUser === person.name ? 'visible' : 'hidden'}`}>
+                <div className="stocks-grid">
+                  {person.stocks.map((symbol, idx) => (
+                    <React.Fragment key={symbol}>
                       <StockGraph
-                        key={symbol}
                         symbol={symbol}
                         onInvestmentValue={value => person.handleValue(symbol, value)}
                         shorted={idx === person.stocks.length - 1}
                       />
-                    ))}
-                  </div>
-                </div>
-              )}
-              {expandedUser !== person.name && (
-                <div className="stocks-section hidden">
-                  {person.stocks.map((symbol, idx) => (
-                    <StockGraph
-                      key={symbol}
-                      symbol={symbol}
-                      onInvestmentValue={value => person.handleValue(symbol, value)}
-                      shorted={idx === person.stocks.length - 1}
-                    />
+                      {expandedUser === person.name && idx < person.stocks.length - 1 && (
+                        <div className="stock-divider"></div>
+                      )}
+                    </React.Fragment>
                   ))}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
