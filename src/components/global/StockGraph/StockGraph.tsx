@@ -6,7 +6,7 @@ import { fetchYahooChartData } from '../../../functions/api_calls';
 import './StockGraph.css';
 
 const RANGES = [
-  { label: 'Sept 1', value: 'sept1' },
+  { label: 'Oct 1', value: 'oct1' },
   { label: '1D', value: '1d' },
   { label: '5D', value: '5d' },
   { label: '1M', value: '1mo' },
@@ -16,9 +16,9 @@ const RANGES = [
 ];
 
 function getYahooRange(range: string) {
-  if (range === 'sept1') {
-    // Custom: from 2025-09-01 to now, daily interval
-    const from = Math.floor(new Date('2025-09-01T00:00:00Z').getTime() / 1000);
+  if (range === 'oct1') {
+    // Custom: from 2025-10-01 to now, daily interval
+    const from = Math.floor(new Date('2025-10-01T00:00:00Z').getTime() / 1000);
     const to = Math.floor(Date.now() / 1000);
     return { range: { from, to }, interval: '1d', isCustom: true };
   }
@@ -39,12 +39,12 @@ interface StockGraphProps {
 }
 
 const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shorted }) => {
-  const [range, setRange] = useState('sept1');
+  const [range, setRange] = useState('oct1');
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [sept1InvestmentValue, setSept1InvestmentValue] = useState<number | null>(null);
-  const sept1InvestmentValueSet = useRef(false);
+  const [oct1InvestmentValue, setOct1InvestmentValue] = useState<number | null>(null);
+  const oct1InvestmentValueSet = useRef(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -95,10 +95,10 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
   }
 
   useEffect(() => {
-    if (!sept1InvestmentValueSet.current && range === 'sept1' && percentChange !== null) {
+    if (!oct1InvestmentValueSet.current && range === 'oct1' && percentChange !== null) {
       const value = 20 * (1 + percentChange / 100);
-      setSept1InvestmentValue(value);
-      sept1InvestmentValueSet.current = true;
+      setOct1InvestmentValue(value);
+      oct1InvestmentValueSet.current = true;
       if (onInvestmentValue && !isNaN(value)) {
         onInvestmentValue(value);
       }
@@ -108,15 +108,15 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
 
   return (
     <div>
-      {sept1InvestmentValue !== null && (
+      {oct1InvestmentValue !== null && (
         <div style={{
           textAlign: 'center',
           fontSize: '1.4rem',
           fontWeight: 600,
-          color: sept1InvestmentValue >= 20 ? 'var(--color-green)' : 'var(--color-red)',
+          color: oct1InvestmentValue >= 20 ? 'var(--color-green)' : 'var(--color-red)',
           marginBottom: '0.2rem',
         }}>
-          ${sept1InvestmentValue.toFixed(2)}
+          ${oct1InvestmentValue.toFixed(2)}
         </div>
       )}
       <div

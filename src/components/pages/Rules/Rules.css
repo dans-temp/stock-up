@@ -24,8 +24,8 @@
 }
 
 .rules-barrel-image {
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 300px;
+  max-height: 300px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -209,12 +209,7 @@
   .rules-title {
     font-size: 2.2rem;
   }
-  
-  .rules-barrel-image {
-    max-width: 200px;
-    max-height: 200px;
-  }
-  
+
   .rules-section {
     padding: 1.5rem;
   }
