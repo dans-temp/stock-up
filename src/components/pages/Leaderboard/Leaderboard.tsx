@@ -3,12 +3,12 @@ import StockGraph from '../../global/StockGraph/StockGraph';
 import './Leaderboard.css';
 
 const users = [
-  { name: "Dan", stocks: ['AAPL', 'MSFT', 'NVDA', 'TSLA', 'AMZN'] },
-  { name: "Lionel", stocks: ['GOOGL', 'META', 'NFLX', 'BABA', 'AMD'] },
-  { name: "Yiming", stocks: ['SPOT', 'SHOP', 'ICE', 'ROKU', 'PLTR'] },
-  { name: "Raghav", stocks: ['CRM', 'ADBE', 'NOW', 'SNOW', 'DDOG'] },
-  { name: "Matt", stocks: ['UBER', 'LYFT', 'ABNB', 'DASH', 'COIN'] },
-  { name: "Liyang", stocks: ['ZM', 'DOCU', 'CRWD', 'ZS', 'OKTA'] },
+  { name: "Dan", stocks: ['INTC', 'MSFT', 'NTDOY', 'ICE', 'TGT'] },
+  { name: "Lionel", stocks: ['LYFT', 'SNAP', 'DJT', 'CNC', 'ASBP'] },
+  { name: "Yiming", stocks: ['OPFI', 'MVST', 'ADBE', 'CROX', 'RGC'] },
+  { name: "Raghav", stocks: ['ICE', 'NVDA', 'NVO', 'DOW', 'TSLA'] },
+  { name: "Matt", stocks: ['INTC', 'OPEN', 'ICE', 'RZLV', 'MARA'] },
+  { name: "Liyang", stocks: ['HIMS', 'IONQ', 'APP', 'SOFI', 'BLNK'] },
 ];
 
 function Leaderboard() {

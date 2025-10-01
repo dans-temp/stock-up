@@ -20,7 +20,7 @@ function getYahooRange(range: string) {
     // Custom: from 2025-10-01 to now, daily interval
     const from = Math.floor(new Date('2025-10-01T00:00:00Z').getTime() / 1000);
     const to = Math.floor(Date.now() / 1000);
-    return { range: { from, to }, interval: '1d', isCustom: true };
+    return { range: { from, to }, interval: '15m', isCustom: true };
   }
   switch (range) {
     case '1d': return { range: '1d', interval: '5m' };
