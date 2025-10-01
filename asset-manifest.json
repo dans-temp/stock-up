@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stock-up/static/css/main.1c935d1f.css",
-    "main.js": "/stock-up/static/js/main.48fe7ddd.js",
+    "main.js": "/stock-up/static/js/main.1a2ef966.js",
     "static/js/453.bcbedd5b.chunk.js": "/stock-up/static/js/453.bcbedd5b.chunk.js",
     "static/media/Barrel.png": "/stock-up/static/media/Barrel.3d9dda0eb550acfe1b79.png",
     "static/media/rules-barrel.png": "/stock-up/static/media/rules-barrel.caa4643c2abb57ae0519.png",
@@ -12,11 +12,11 @@
     "static/media/Inter-Regular.woff2": "/stock-up/static/media/Inter-Regular.f1535355a7df553be385.woff2",
     "index.html": "/stock-up/index.html",
     "main.1c935d1f.css.map": "/stock-up/static/css/main.1c935d1f.css.map",
-    "main.48fe7ddd.js.map": "/stock-up/static/js/main.48fe7ddd.js.map",
+    "main.1a2ef966.js.map": "/stock-up/static/js/main.1a2ef966.js.map",
     "453.bcbedd5b.chunk.js.map": "/stock-up/static/js/453.bcbedd5b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1c935d1f.css",
-    "static/js/main.48fe7ddd.js"
+    "static/js/main.1a2ef966.js"
   ]
 }
