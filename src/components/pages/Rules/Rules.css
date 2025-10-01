@@ -205,6 +205,42 @@
 }
 
 /* Responsive design */
+@media (min-width: 1400px) {
+  .rules-title {
+    font-size: 2.2rem;
+  }
+  
+  .rules-barrel-image {
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .rules-section {
+    padding: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .rules-section p,
+  .rules-section li {
+    font-size: 1rem;
+  }
+  
+  .timeline-item {
+    font-size: 1rem;
+  }
+  
+  .timeline-item strong {
+    font-size: 1.1rem;
+  }
+  
+  .final-score p {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .rules-container {
     padding: 1rem;

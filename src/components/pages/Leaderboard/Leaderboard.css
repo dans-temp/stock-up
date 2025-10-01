@@ -351,6 +351,29 @@
 }
 
 /* Responsive design */
+@media (min-width: 1400px) {
+  .leaderboard-title {
+    font-size: 2rem;
+  }
+  
+  .competitor-card {
+    padding: 1.5rem;
+  }
+  
+  .competitor-name {
+    font-size: 1.8rem;
+  }
+  
+  .total-value {
+    font-size: 1.6rem;
+  }
+  
+  .rank-badge {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
 @media (max-width: 1200px) {
   .leaderboard-title {
     font-size: 3rem;

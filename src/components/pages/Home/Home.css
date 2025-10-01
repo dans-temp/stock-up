@@ -134,6 +134,27 @@
 }
 
 /* Responsive design */
+@media (min-width: 1400px) {
+  .app-title {
+    font-size: 3.5rem;
+  }
+  
+  .logo-container {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  
+  .slogan {
+    font-size: 1.4rem;
+  }
+  
+  .home-button {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    min-width: 200px;
+  }
+}
+
 @media (max-width: 768px) {
   .home-container {
     padding: 1rem;
