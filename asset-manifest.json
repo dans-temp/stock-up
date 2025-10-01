@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/stock-up/static/css/main.a3731237.css",
+    "main.js": "/stock-up/static/js/main.e6904a5e.js",
+    "static/js/453.bcbedd5b.chunk.js": "/stock-up/static/js/453.bcbedd5b.chunk.js",
+    "static/media/Barrel.png": "/stock-up/static/media/Barrel.3d9dda0eb550acfe1b79.png",
+    "static/media/rules-barrel.png": "/stock-up/static/media/rules-barrel.caa4643c2abb57ae0519.png",
+    "static/media/Inter-Bold.woff2": "/stock-up/static/media/Inter-Bold.b4118e4ad76754e71d0b.woff2",
+    "static/media/Inter-SemiBold.woff2": "/stock-up/static/media/Inter-SemiBold.5d2eaa33f8194c062cad.woff2",
+    "static/media/Inter-ExtraBold.woff2": "/stock-up/static/media/Inter-ExtraBold.af3824f4adfaba3054f2.woff2",
+    "static/media/Inter-Medium.woff2": "/stock-up/static/media/Inter-Medium.6629df60b0706dec8113.woff2",
+    "static/media/Inter-Regular.woff2": "/stock-up/static/media/Inter-Regular.f1535355a7df553be385.woff2",
+    "index.html": "/stock-up/index.html",
+    "main.a3731237.css.map": "/stock-up/static/css/main.a3731237.css.map",
+    "main.e6904a5e.js.map": "/stock-up/static/js/main.e6904a5e.js.map",
+    "453.bcbedd5b.chunk.js.map": "/stock-up/static/js/453.bcbedd5b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3731237.css",
+    "static/js/main.e6904a5e.js"
+  ]
+}
