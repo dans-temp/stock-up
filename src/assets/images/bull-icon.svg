@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Bull head base -->
+  <ellipse cx="100" cy="120" rx="70" ry="55" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  
+  <!-- Horns -->
+  <path d="M45 85 Q35 70 25 55 Q20 45 25 40 Q35 35 45 45 Q55 60 60 75" fill="#F5F5DC" stroke="#D2B48C" stroke-width="2"/>
+  <path d="M155 85 Q165 70 175 55 Q180 45 175 40 Q165 35 155 45 Q145 60 140 75" fill="#F5F5DC" stroke="#D2B48C" stroke-width="2"/>
+  
+  <!-- Horn tips -->
+  <path d="M25 55 Q20 45 25 40" fill="#696969" stroke="#2F4F4F" stroke-width="1"/>
+  <path d="M175 55 Q180 45 175 40" fill="#696969" stroke="#2F4F4F" stroke-width="1"/>
+  
+  <!-- Ears -->
+  <ellipse cx="60" cy="95" rx="12" ry="18" fill="#CD853F" stroke="#8B4513" stroke-width="1"/>
+  <ellipse cx="140" cy="95" rx="12" ry="18" fill="#CD853F" stroke="#8B4513" stroke-width="1"/>
+  <ellipse cx="60" cy="95" rx="6" ry="10" fill="#DEB887"/>
+  <ellipse cx="140" cy="95" rx="6" ry="10" fill="#DEB887"/>
+  
+  <!-- Eyes -->
+  <circle cx="80" cy="110" r="8" fill="white"/>
+  <circle cx="120" cy="110" r="8" fill="white"/>
+  <circle cx="82" cy="108" r="5" fill="black"/>
+  <circle cx="118" cy="108" r="5" fill="black"/>
+  <circle cx="84" cy="106" r="2" fill="white"/>
+  <circle cx="116" cy="106" r="2" fill="white"/>
+  
+  <!-- Eyebrows -->
+  <path d="M72 100 Q80 95 88 100" stroke="#654321" stroke-width="3" fill="none"/>
+  <path d="M112 100 Q120 95 128 100" stroke="#654321" stroke-width="3" fill="none"/>
+  
+  <!-- Snout -->
+  <ellipse cx="100" cy="135" rx="20" ry="15" fill="#DEB887" stroke="#CD853F" stroke-width="2"/>
+  
+  <!-- Nostrils -->
+  <ellipse cx="95" cy="135" rx="3" ry="5" fill="#8B4513"/>
+  <ellipse cx="105" cy="135" rx="3" ry="5" fill="#8B4513"/>
+  
+  <!-- Mouth -->
+  <path d="M85 145 Q100 155 115 145" stroke="#654321" stroke-width="2" fill="none"/>
+  
+  <!-- Hair tuft on top -->
+  <path d="M85 75 L100 60 L115 75 L105 80 L95 80 Z" fill="#654321" stroke="#4A2C17" stroke-width="1"/>
+</svg>

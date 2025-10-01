@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import barrelImage from '../../../assets/images/Barrel.png';
 import './Home.css';
 
 function Home() {
@@ -8,9 +9,8 @@ function Home() {
       <div className="home-container">
         <h1 className="app-title">Stock-Up</h1>
         
-        <div className="logo-placeholder">
-          <div className="placeholder-icon">📈</div>
-          <span className="placeholder-text">App Logo</span>
+        <div className="logo-container">
+          <img src={barrelImage} alt="Stock-Up Mascot" className="mascot-image" />
         </div>
         
         <p className="slogan">Invest. Compete. Win.</p>

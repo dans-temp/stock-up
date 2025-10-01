@@ -11,9 +11,24 @@
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #FFBB00;
   letter-spacing: -0.5px;
+}
+
+.rules-barrel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.rules-barrel-image {
+  max-width: 250px;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .rules-section {
@@ -197,6 +212,15 @@
   
   .rules-title {
     font-size: 2.2rem;
+  }
+  
+  .rules-barrel-container {
+    margin-bottom: 2rem;
+  }
+  
+  .rules-barrel-image {
+    max-width: 200px;
+    max-height: 200px;
   }
   
   .rules-section {

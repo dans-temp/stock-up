@@ -162,7 +162,7 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
                 <XAxis dataKey="time" minTickGap={15} tick={{ fill: '#fff', fontSize: 10 }} />
                 <YAxis domain={['auto', 'auto']} tick={{ fill: '#fff', fontSize: 10 }} />
                 <Tooltip contentStyle={{ background: '#333', border: 'none', color: '#fff' }} />
-                <Line type="monotone" dataKey="price" stroke="#61dafb" dot={false} strokeWidth={1.5} />
+                <Line type="monotone" dataKey="price" stroke="#FFD700" dot={false} strokeWidth={1.5} />
               </LineChart>
             </ResponsiveContainer>
           )}

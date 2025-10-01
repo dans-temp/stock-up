@@ -1,11 +1,16 @@
 import React from 'react';
+import rulesBarrelImage from '../../../assets/images/rules-barrel.png';
 import './Rules.css';
 
 function Rules() {
   return (
     <div className="page-container">
       <div className="rules-container">
-        <h1 className="rules-title">📈 Stock Challenge Rules</h1>
+        <h1 className="rules-title">Rules</h1>
+        
+        <div className="rules-barrel-container">
+          <img src={rulesBarrelImage} alt="Rules Mascot" className="rules-barrel-image" />
+        </div>
         
         <div className="rules-section">
           <h2 className="section-title">💰 Entry Fee</h2>
