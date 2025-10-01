@@ -242,15 +242,19 @@
 
 .expand-indicator {
   font-size: 1.5rem;
-  color: #61dafb;
+  color: #FFBB00;
   margin-left: 1rem;
   transition: transform 0.3s ease, color 0.3s ease;
   user-select: none;
 }
 
 .competitor-header.clickable:hover .expand-indicator {
-  color: #FFBB00;
+  color: #61dafb;
   transform: scale(1.2);
+}
+
+.stock-graph-range-buttons button.active {
+  background: #FFBB00;
 }
 
 .total-label {
@@ -391,7 +395,7 @@
   }
   
   .competitor-card {
-    padding: 1.5rem;
+    padding: 15px;
   }
   
   .competitor-header {
@@ -413,6 +417,12 @@
   
   .competitor-name {
     font-size: 1.8rem;
+  }
+
+  .stock-graph-container {
+    width: 75vw;
+    padding-left: 0px;
+    padding-right: 14px;
   }
   
   .total-value {
