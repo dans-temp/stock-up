@@ -13,7 +13,7 @@ const users = [
 
 function Leaderboard() {
   const [portfolios, setPortfolios] = useState<{ [user: string]: { [symbol: string]: number } }>({});
-  const [expandedUser, setExpandedUser] = useState<string | null>(null);
+  const [expandedUsers, setExpandedUsers] = useState<Set<string>>(new Set());
 
   function handlePortfolioValue(user: string, symbol: string, value: number | null) {
     setPortfolios(prev => ({
@@ -31,7 +31,15 @@ function Leaderboard() {
   }
 
   function toggleUserExpansion(userName: string) {
-    setExpandedUser(prev => prev === userName ? null : userName);
+    setExpandedUsers(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(userName)) {
+        newSet.delete(userName);
+      } else {
+        newSet.add(userName);
+      }
+      return newSet;
+    });
   }
 
   const leaderboard = users.map(user => {
@@ -64,10 +72,10 @@ function Leaderboard() {
                   </span>
                 </div>
                 <div className="expand-indicator">
-                  {expandedUser === person.name ? '▼' : '▶'}
+                  {expandedUsers.has(person.name) ? '▼' : '▶'}
                 </div>
               </div>
-              <div className={`stocks-section ${expandedUser === person.name ? 'visible' : 'hidden'}`}>
+              <div className={`stocks-section ${expandedUsers.has(person.name) ? 'visible' : 'hidden'}`}>
                 <div className="stocks-grid">
                   {person.stocks.map((symbol, idx) => (
                     <React.Fragment key={symbol}>
@@ -76,7 +84,7 @@ function Leaderboard() {
                         onInvestmentValue={value => person.handleValue(symbol, value)}
                         shorted={idx === person.stocks.length - 1}
                       />
-                      {expandedUser === person.name && idx < person.stocks.length - 1 && (
+                      {expandedUsers.has(person.name) && idx < person.stocks.length - 1 && (
                         <div className="stock-divider"></div>
                       )}
                     </React.Fragment>
