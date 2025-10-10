@@ -42,6 +42,7 @@ function Rules() {
           <div className="short-explanation">
             <h3>🔁 For the short pick, think of the graph as flipped:</h3>
             <p>If the stock drops 20%, you gain 20%. If it rises 10%, you lose 10%.</p>
+            <p>You can only lose the money you invenst in a short pick no matter how high it goes up.</p>
           </div>
         </div>
 
