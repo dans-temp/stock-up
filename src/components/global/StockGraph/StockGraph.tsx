@@ -17,7 +17,7 @@ const RANGES = [
 
 function getYahooRange(range: string) {
   if (range === 'oct1') {
-    const marketOpenET = new Date(Date.UTC(2025, 8, 30, 13, 30, 0)); // 9:30 AM ET = 13:30 UTC
+    const marketOpenET = new Date(Date.UTC(2025, 8, 30, 13, 30, 0));
     const from = Math.floor(marketOpenET.getTime() / 1000);
     const to = Math.floor(Date.now() / 1000);
     return { range: { from, to }, interval: '1d', isCustom: true };
@@ -88,7 +88,10 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
     if (start && end) {
       percentChange = ((end - start) / start) * 100;
       if (shorted) {
-        percentChange = -Math.max(percentChange, -100);
+        percentChange = -percentChange;
+        if (percentChange < -100) {
+          percentChange = -100;
+        }
       }
       isUp = percentChange > 0;
     }
