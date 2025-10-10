@@ -17,15 +17,15 @@ const RANGES = [
 
 function getYahooRange(range: string) {
   if (range === 'oct1') {
-    // Custom: from 2025-10-01 to now, daily interval
-    const from = Math.floor(new Date('2025-10-01T00:00:00Z').getTime() / 1000);
+    const marketOpenET = new Date(Date.UTC(2025, 8, 30, 13, 30, 0)); // 9:30 AM ET = 13:30 UTC
+    const from = Math.floor(marketOpenET.getTime() / 1000);
     const to = Math.floor(Date.now() / 1000);
     return { range: { from, to }, interval: '1d', isCustom: true };
   }
   switch (range) {
     case '1d': return { range: '1d', interval: '5m' };
     case '5d': return { range: '5d', interval: '15m' };
-    case '1mo': return { range: '1mo', interval: '1h' };
+    case '1mo': return { range: '1mo', interval: '1d' };
     case 'ytd': return { range: 'ytd', interval: '1d' };
     case '1y': return { range: '1y', interval: '1d' };
     case '5y': return { range: '5y', interval: '1wk' };
