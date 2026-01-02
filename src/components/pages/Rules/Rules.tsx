@@ -14,9 +14,11 @@ function Rules() {
 
         <div className="rules-section">
           <h2 className="section-title">🏆 Prizes</h2>
+          <p>With 10 players contributing $20 each.</p>
           <ul className="prize-list">
-            <li><strong>🏆 1st Place:</strong> Wins the entire prize pool (minus 2nd place's entry fee).</li>
-            <li><strong>🥈 2nd Place:</strong> Gets their $20 back.</li>
+            <li><strong>🏆 1st Place:</strong> Wins $100 from the prize pool (and keeps their $20 entry fee).</li>
+            <li><strong>🥈 2nd Place:</strong> Wins $40 from the prize pool (and keeps their $20 entry fee).</li>
+            <li><strong>🥉 3rd Place:</strong> Keeps their $20 entry fee.</li>
             <li><strong>🗑 Last Place:</strong> Must buy 1st place a beer 🍺.</li>
           </ul>
         </div>
@@ -63,7 +65,7 @@ function Rules() {
           <div className="not-allowed">
             <h3>🚫 Not allowed:</h3>
             <ul>
-              <li>ETFs (e.g., S&P 500)</li>
+              <li>Diversified ETFs (e.g., S&P 500)</li>
               <li>Mutual Funds</li>
               <li>Index Funds</li>
               <li>Crypto</li>

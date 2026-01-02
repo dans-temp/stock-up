@@ -17,10 +17,10 @@ const RANGES = [
 
 function getYahooRange(range: string) {
   if (range === 'start') {
-    const marketCloseET = new Date(Date.UTC(2026, 0, 1, 0, 0, 0));
-    const from = Math.floor(marketCloseET.getTime() / 1000);
+    const marketOpenET = new Date(Date.UTC(2025, 11, 31, 0, 0, 0));
+    const from = Math.floor(marketOpenET.getTime() / 1000);
     const to = Math.floor(Date.now() / 1000);
-    return { range: { from, to }, interval: '5m', isCustom: true }; // change to 1d later
+    return { range: { from, to }, interval: '1d', isCustom: true };
   }
   switch (range) {
     case '1d': return { range: '1d', interval: '5m' };

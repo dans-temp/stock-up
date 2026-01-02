@@ -123,7 +123,11 @@
 
 .rank-4::before,
 .rank-5::before,
-.rank-6::before {
+.rank-6::before,
+.rank-7::before,
+.rank-8::before,
+.rank-9::before,
+.rank-10::before {
   background: none;
   border: 2px solid rgba(255, 255, 255, 0.3);
   animation: none;
@@ -198,7 +202,11 @@
 
 .rank-4 .rank-badge,
 .rank-5 .rank-badge,
-.rank-6 .rank-badge {
+.rank-6 .rank-badge,
+.rank-7 .rank-badge,
+.rank-8 .rank-badge,
+.rank-9 .rank-badge,
+.rank-10 .rank-badge  {
   background: #ffffff;
   background: -webkit-linear-gradient(135deg, #ffffff, #e0e0e0);
   background: -moz-linear-gradient(135deg, #ffffff, #e0e0e0);
