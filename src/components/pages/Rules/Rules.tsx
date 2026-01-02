@@ -42,7 +42,7 @@ function Rules() {
           <div className="short-explanation">
             <h3>🔁 For the short pick, think of the graph as flipped:</h3>
             <p>If the stock drops 20%, you gain 20%. If it rises 10%, you lose 10%.</p>
-            <p>You can only lose the money you invenst in a short pick no matter how high it goes up.</p>
+            <p>You can only lose the money you invest in a short pick no matter how high it goes up.</p>
           </div>
         </div>
 
@@ -76,13 +76,13 @@ function Rules() {
         <div className="rules-section">
           <h2 className="section-title">📅 Timeline</h2>
           <div className="timeline-item">
-            <strong>Pick Deadline:</strong> All selections must be posted in this Teams group chat by September 30th. Once you post them here they are locked in and you cannot make changes after.
+            <strong>Pick Deadline:</strong> All selections must be submitted by December 31st. Once you post them here they are locked in and you cannot make changes after.
           </div>
           <div className="timeline-item">
-            <strong>Start Date:</strong> The challenge begins October 1st. Starting prices will be based on market open that day.
+            <strong>Start Date:</strong> The challenge begins January 1st. Starting prices will be based on market close of the previous day (starting price used is market close December 31st).
           </div>
           <div className="timeline-item">
-            <strong>End Date:</strong> Final prices will be recorded at market close on December 31st and whoever has gained the most money is the winner.
+            <strong>End Date:</strong> Final prices will be recorded at market close on March 31st and whoever has gained the most money is the winner.
           </div>
           
           <div className="final-score">

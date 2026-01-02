@@ -2,18 +2,33 @@ import React, { useState } from 'react';
 import StockGraph from '../../global/StockGraph/StockGraph';
 import './Leaderboard.css';
 
-const users = [
-  { name: "Dan", stocks: ['INTC', 'MSFT', 'NTDOY', 'ICE', 'TGT'] },
-  { name: "Lionel", stocks: ['LYFT', 'SNAP', 'DJT', 'CNC', 'ASBP'] },
-  { name: "Yiming", stocks: ['OPFI', 'MVST', 'ADBE', 'CROX', 'RGC'] },
-  { name: "Raghav", stocks: ['ICE', 'NVDA', 'NVO', 'DOW', 'TSLA'] },
-  { name: "Matt", stocks: ['INTC', 'OPEN', 'ICE', 'RZLV', 'MARA'] },
-  { name: "Liyang", stocks: ['HIMS', 'IONQ', 'APP', 'SOFI', 'BLNK'] },
-];
+interface Stock {
+  ticker: string;
+  name: string;
+}
 
-function Leaderboard() {
-  const [portfolios, setPortfolios] = useState<{ [user: string]: { [symbol: string]: number } }>({});
+interface User {
+  name: string;
+  stocks: (string | Stock)[];
+}
+
+interface HistoricalData {
+  users: User[];
+  portfolios: { [user: string]: { [symbol: string]: number } };
+  stockData: { [symbol: string]: { time: string; price: number }[] };
+  quarter: string;
+}
+
+interface LeaderboardProps {
+  users?: User[];
+  historicalData?: HistoricalData;
+}
+
+function Leaderboard({ users, historicalData }: LeaderboardProps) {
+  const [portfolios, setPortfolios] = useState<{ [user: string]: { [symbol: string]: number } }>(historicalData?.portfolios || {});
   const [expandedUsers, setExpandedUsers] = useState<Set<string>>(new Set());
+  
+  const actualUsers = users || historicalData?.users || [];
 
   function handlePortfolioValue(user: string, symbol: string, value: number | null) {
     setPortfolios(prev => ({
@@ -42,7 +57,7 @@ function Leaderboard() {
     });
   }
 
-  const leaderboard = users.map(user => {
+  const leaderboard = actualUsers.map(user => {
     const total = Object.values(portfolios[user.name] || {}).reduce((sum, v) => sum + v, 0);
     return {
       ...user,
@@ -55,7 +70,7 @@ function Leaderboard() {
   return (
     <div className="page-container">
       <div className="leaderboard-container">
-        <h1 className="leaderboard-title">🏆 Leaderboard</h1>
+        <h1 className="leaderboard-title">🏆 {historicalData ? historicalData.quarter : 'Leaderboard'}</h1>
         <div className="competitors-grid">
           {leaderboard.map((person, index) => (
             <div key={person.name} className={`competitor-card rank-${index + 1}`}>
@@ -77,18 +92,24 @@ function Leaderboard() {
               </div>
               <div className={`stocks-section ${expandedUsers.has(person.name) ? 'visible' : 'hidden'}`}>
                 <div className="stocks-grid">
-                  {person.stocks.map((symbol, idx) => (
-                    <React.Fragment key={symbol}>
-                      <StockGraph
-                        symbol={symbol}
-                        onInvestmentValue={value => person.handleValue(symbol, value)}
-                        shorted={idx === person.stocks.length - 1}
-                      />
-                      {expandedUsers.has(person.name) && idx < person.stocks.length - 1 && (
-                        <div className="stock-divider"></div>
-                      )}
-                    </React.Fragment>
-                  ))}
+                  {person.stocks.map((stock, idx) => {
+                    const ticker = typeof stock === 'string' ? stock : stock.ticker;
+                    const stockName = typeof stock === 'string' ? undefined : stock.name;
+                    return (
+                      <React.Fragment key={ticker}>
+                        <StockGraph
+                          symbol={ticker}
+                          stockName={stockName}
+                          onInvestmentValue={value => person.handleValue(ticker, value)}
+                          shorted={idx === person.stocks.length - 1}
+                          historicalData={historicalData?.stockData[ticker]}
+                        />
+                        {expandedUsers.has(person.name) && idx < person.stocks.length - 1 && (
+                          <div className="stock-divider"></div>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { fetchYahooChartData } from '../../../functions/api_calls';
 import './StockGraph.css';
 
 const RANGES = [
-  { label: 'Oct 1', value: 'oct1' },
+  { label: 'Start', value: 'start' },
   { label: '1D', value: '1d' },
   { label: '5D', value: '5d' },
   { label: '1M', value: '1mo' },
@@ -16,11 +16,11 @@ const RANGES = [
 ];
 
 function getYahooRange(range: string) {
-  if (range === 'oct1') {
-    const marketOpenET = new Date(Date.UTC(2025, 8, 30, 13, 30, 0));
-    const from = Math.floor(marketOpenET.getTime() / 1000);
+  if (range === 'start') {
+    const marketCloseET = new Date(Date.UTC(2025, 8, 30, 13, 30, 0));  //new Date(Date.UTC(2025, 11, 31, 21, 0, 0)). market close for Dec 31, 2025
+    const from = Math.floor(marketCloseET.getTime() / 1000);
     const to = Math.floor(Date.now() / 1000);
-    return { range: { from, to }, interval: '1d', isCustom: true };
+    return { range: { from, to }, interval: '1d', isCustom: true }; // change to 5m later
   }
   switch (range) {
     case '1d': return { range: '1d', interval: '5m' };
@@ -34,20 +34,29 @@ function getYahooRange(range: string) {
 
 interface StockGraphProps {
   symbol?: string;
+  stockName?: string;
   onInvestmentValue?: (value: number | null) => void;
   shorted?: boolean;
+  historicalData?: { time: string; price: number }[];
 }
 
-const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shorted }) => {
-  const [range, setRange] = useState('oct1');
+const StockGraph: React.FC<StockGraphProps> = ({ symbol, stockName, onInvestmentValue, shorted, historicalData }) => {
+  const [range, setRange] = useState('start');
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [oct1InvestmentValue, setOct1InvestmentValue] = useState<number | null>(null);
-  const oct1InvestmentValueSet = useRef(false);
+  const [startInvestmentValue, setStartInvestmentValue] = useState<number | null>(null);
+  const [companyName, setCompanyName] = useState<string | null>(null);
+  const startInvestmentValueSet = useRef(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (historicalData) {
+        // Use historical data instead of making API calls
+        setData(historicalData);
+        return;
+      }
+      
       setLoading(true);
       setError(null);
       try {
@@ -58,18 +67,19 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
           setLoading(false);
           return;
         }
-        let chartData;
+        let response;
         if (config && config.isCustom && typeof config.range === 'object') {
-          chartData = await fetchYahooChartData(symbol, config.range, config.interval);
+          response = await fetchYahooChartData(symbol, config.range, config.interval);
         } else if (config) {
-          chartData = await fetchYahooChartData(symbol, config.range, config.interval);
+          response = await fetchYahooChartData(symbol, config.range, config.interval);
         } else {
           setError('Invalid range');
           setData([]);
           setLoading(false);
           return;
         }
-        setData(chartData);
+        setData(response.chartData);
+        setCompanyName(response.companyName);
       } catch (e) {
         setError('Failed to fetch chart data');
         setData([]);
@@ -77,7 +87,7 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
       setLoading(false);
     };
     fetchData();
-  }, [range, symbol]);
+  }, [range, symbol, historicalData]);
 
   // Calculate percentage change for the currently displayed range
   let percentChange: number | null = null;
@@ -98,10 +108,10 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
   }
 
   useEffect(() => {
-    if (!oct1InvestmentValueSet.current && range === 'oct1' && percentChange !== null) {
+    if (!startInvestmentValueSet.current && range === 'start' && percentChange !== null) {
       const value = 20 * (1 + percentChange / 100);
-      setOct1InvestmentValue(value);
-      oct1InvestmentValueSet.current = true;
+      setStartInvestmentValue(value);
+      startInvestmentValueSet.current = true;
       if (onInvestmentValue && !isNaN(value)) {
         onInvestmentValue(value);
       }
@@ -111,15 +121,15 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
 
   return (
     <div>
-      {oct1InvestmentValue !== null && (
+      {startInvestmentValue !== null && (
         <div style={{
           textAlign: 'center',
           fontSize: '1.4rem',
           fontWeight: 600,
-          color: oct1InvestmentValue >= 20 ? 'var(--color-green)' : 'var(--color-red)',
+          color: startInvestmentValue >= 20 ? 'var(--color-green)' : 'var(--color-red)',
           marginBottom: '0.2rem',
         }}>
-          ${oct1InvestmentValue.toFixed(2)}
+          ${startInvestmentValue.toFixed(2)}
         </div>
       )}
       <div
@@ -127,7 +137,13 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
         style={shorted ? { background: '#2d1a1a' } : {}}
       >
         {symbol && (
-          <div className="stock-graph-symbol">{symbol.toUpperCase()}{shorted ? ' (Short)' : ''}</div>
+          <div className="stock-graph-symbol">
+            <div style={{ fontSize: '0.8rem', fontWeight: 'bold', margin: '0.2rem' }}>{shorted ? ' Short Pick' : ''}</div>
+            {(stockName || companyName) && (
+              <div style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: '0.2rem' }}>{stockName || companyName}</div>
+            )}
+            <div style={{ fontSize: '0.8rem' }}>{symbol.toUpperCase()}</div>
+          </div>
         )}
         {percentChange !== null && (
           <div style={{
@@ -144,17 +160,19 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, onInvestmentValue, shor
             {Math.abs(percentChange).toFixed(2)}%
           </div>
         )}
-        <div className="stock-graph-range-buttons">
-          {RANGES.map(r => (
-            <button
-              key={r.value}
-              onClick={() => setRange(r.value)}
-              className={range === r.value ? 'active' : ''}
-            >
-              {r.label}
-            </button>
-          ))}
-        </div>
+        {!historicalData && (
+          <div className="stock-graph-range-buttons">
+            {RANGES.map(r => (
+              <button
+                key={r.value}
+                onClick={() => setRange(r.value)}
+                className={range === r.value ? 'active' : ''}
+              >
+                {r.label}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="stock-graph-chart-area">
           {loading && <p>Loading chart...</p>}
           {error && <p className="stock-graph-error">{error}</p>}

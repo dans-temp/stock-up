@@ -37,6 +37,12 @@ function NavBar() {
           Leaderboard
         </Link>
         <Link 
+          to="/history" 
+          className={`navbar-link ${isActive('/history') ? 'primary' : ''}`}
+        >
+          History
+        </Link>
+        <Link 
           to="/rules" 
           className={`navbar-link ${isActive('/rules') ? 'primary' : ''}`}
         >
@@ -69,6 +75,13 @@ function NavBar() {
           onClick={closeMenu}
         >
           Leaderboard
+        </Link>
+        <Link 
+          to="/history" 
+          className={`navbar-link ${isActive('/history') ? 'primary' : ''}`}
+          onClick={closeMenu}
+        >
+          History
         </Link>
         <Link 
           to="/rules" 
