@@ -2,7 +2,7 @@ export async function fetchYahooChartData(
   stock: string,
   yfRange: string | { from: number; to: number },
   interval: string
-): Promise<{ chartData: { time: string; price: number }[]; companyName: string | null }> {
+): Promise<{ chartData: { time: string; price: number }[]; companyName: string | null; currency: string | null }> {
   let url;
   if (typeof yfRange === 'object') {
     // Custom period1/period2 for Yahoo Finance
@@ -17,6 +17,7 @@ export async function fetchYahooChartData(
   const timestamps = result.timestamp;
   const prices = result.indicators.quote[0].close;
   const companyName = result.meta?.shortName || result.meta?.longName || null;
+  const currency = result.meta?.currency || null;
   // Format data for recharts
   const chartData = timestamps.map((t: number, i: number) => ({
     time: new Date(t * 1000).toLocaleString(
@@ -27,5 +28,5 @@ export async function fetchYahooChartData(
     ),
     price: prices[i],
   })).filter((d: any) => d.price !== null);
-  return { chartData, companyName };
+  return { chartData, companyName, currency };
 }

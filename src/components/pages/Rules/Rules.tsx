@@ -14,9 +14,9 @@ function Rules() {
 
         <div className="rules-section">
           <h2 className="section-title">🏆 Prizes</h2>
-          <p>With 10 players contributing $20 each.</p>
+          <p>With 9 players contributing $20 each.</p>
           <ul className="prize-list">
-            <li><strong>🏆 1st Place:</strong> Wins $100 from the prize pool (and keeps their $20 entry fee).</li>
+            <li><strong>🏆 1st Place:</strong> Wins $80 from the prize pool (and keeps their $20 entry fee).</li>
             <li><strong>🥈 2nd Place:</strong> Wins $40 from the prize pool (and keeps their $20 entry fee).</li>
             <li><strong>🥉 3rd Place:</strong> Keeps their $20 entry fee.</li>
             <li><strong>🗑 Last Place:</strong> Must buy 1st place a beer 🍺.</li>

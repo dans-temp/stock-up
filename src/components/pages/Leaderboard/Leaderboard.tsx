@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StockGraph from '../../global/StockGraph/StockGraph';
 import './Leaderboard.css';
 
@@ -27,10 +27,14 @@ interface LeaderboardProps {
 function Leaderboard({ users, historicalData }: LeaderboardProps) {
   const [portfolios, setPortfolios] = useState<{ [user: string]: { [symbol: string]: number } }>(historicalData?.portfolios || {});
   const [expandedUsers, setExpandedUsers] = useState<Set<string>>(new Set());
+  const [fetchedStocks, setFetchedStocks] = useState<Set<string>>(new Set());
   
   const actualUsers = users || historicalData?.users || [];
 
   function handlePortfolioValue(user: string, symbol: string, value: number | null) {
+
+    setFetchedStocks(prev => new Set(prev).add(`${user}-${symbol}`));
+    
     setPortfolios(prev => ({
       ...prev,
       [user]: {
@@ -58,10 +62,16 @@ function Leaderboard({ users, historicalData }: LeaderboardProps) {
   }
 
   const leaderboard = actualUsers.map(user => {
-    const total = Object.values(portfolios[user.name] || {}).reduce((sum, v) => sum + v, 0);
+    const userPortfolio = portfolios[user.name] || {};
+    const stockSymbols = user.stocks.map(s => typeof s === 'string' ? s : s.ticker);
+    const hasAllData = stockSymbols.every(symbol => userPortfolio[symbol] !== undefined);
+    const allStocksFetched = stockSymbols.every(symbol => fetchedStocks.has(`${user.name}-${symbol}`));
+    const total = Object.values(userPortfolio).reduce((sum, v) => sum + v, 0);
     return {
       ...user,
       total,
+      hasAllData,
+      allStocksFetched,
       handleValue: (symbol: string, value: number | null) =>
         handlePortfolioValue(user.name, symbol, value),
     };
@@ -80,12 +90,28 @@ function Leaderboard({ users, historicalData }: LeaderboardProps) {
               >
                 <div className="rank-badge">#{index + 1}</div>
                 <h2 className="competitor-name">{person.name}</h2>
-                <div className="portfolio-total">
-                  <span className="total-label">Portfolio Total:</span>
-                  <span className={`total-value ${person.total >= 100 ? 'profit' : 'loss'}`}>
-                    ${person.total.toFixed(2)}
-                  </span>
-                </div>
+                {person.hasAllData ? (
+                  <div className="portfolio-total">
+                    <span className="total-label">Portfolio Total:</span>
+                    <span className={`total-value ${person.total >= 100 ? 'profit' : 'loss'}`}>
+                      ${person.total.toFixed(2)}
+                    </span>
+                  </div>
+                ) : person.allStocksFetched ? (
+                  <div className="portfolio-error">
+                    <span 
+                      className="error-icon" 
+                      title="Try waiting a few minutes before trying again"
+                    >
+                      ⚠️
+                    </span>
+                    <span className="error-text">Error fetching data</span>
+                  </div>
+                ) : (
+                  <div className="portfolio-total">
+                    <span className="total-label">Loading...</span>
+                  </div>
+                )}
                 <div className="expand-indicator">
                   {expandedUsers.has(person.name) ? '▼' : '▶'}
                 </div>

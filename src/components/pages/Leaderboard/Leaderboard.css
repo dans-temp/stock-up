@@ -239,6 +239,7 @@
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 0.5px;
+  min-width: 150px;
 }
 
 .portfolio-total {
@@ -246,6 +247,33 @@
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
+}
+
+.portfolio-error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.3rem;
+}
+
+.error-icon {
+  font-size: 2rem;
+  cursor: help;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.error-icon:hover {
+  transform: scale(1.2);
+}
+
+.error-text {
+  font-size: 0.9rem;
+  color: #ff9800;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .expand-indicator {
