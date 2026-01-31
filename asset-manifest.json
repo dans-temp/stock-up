@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stock-up/static/css/main.68aaa230.css",
-    "main.js": "/stock-up/static/js/main.26d2b73f.js",
+    "main.css": "/stock-up/static/css/main.7833a1f5.css",
+    "main.js": "/stock-up/static/js/main.54de59fd.js",
     "static/js/453.bcbedd5b.chunk.js": "/stock-up/static/js/453.bcbedd5b.chunk.js",
     "static/media/Barrel.png": "/stock-up/static/media/Barrel.3d9dda0eb550acfe1b79.png",
     "static/media/rules-barrel.png": "/stock-up/static/media/rules-barrel.caa4643c2abb57ae0519.png",
@@ -11,12 +11,12 @@
     "static/media/Inter-Medium.woff2": "/stock-up/static/media/Inter-Medium.6629df60b0706dec8113.woff2",
     "static/media/Inter-Regular.woff2": "/stock-up/static/media/Inter-Regular.f1535355a7df553be385.woff2",
     "index.html": "/stock-up/index.html",
-    "main.68aaa230.css.map": "/stock-up/static/css/main.68aaa230.css.map",
-    "main.26d2b73f.js.map": "/stock-up/static/js/main.26d2b73f.js.map",
+    "main.7833a1f5.css.map": "/stock-up/static/css/main.7833a1f5.css.map",
+    "main.54de59fd.js.map": "/stock-up/static/js/main.54de59fd.js.map",
     "453.bcbedd5b.chunk.js.map": "/stock-up/static/js/453.bcbedd5b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.68aaa230.css",
-    "static/js/main.26d2b73f.js"
+    "static/css/main.7833a1f5.css",
+    "static/js/main.54de59fd.js"
   ]
 }
