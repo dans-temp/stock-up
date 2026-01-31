@@ -1,14 +1,20 @@
+const isDev = process.env.NODE_ENV === 'development';
+
 export async function fetchYahooChartData(
   stock: string,
   yfRange: string | { from: number; to: number },
   interval: string
 ): Promise<{ chartData: { time: string; price: number }[]; companyName: string | null; currency: string | null }> {
   let url;
+  const baseUrl = isDev
+    ? 'https://corsproxy.io/?https://query1.finance.yahoo.com'
+    : '/api/yahoo';
+  
   if (typeof yfRange === 'object') {
     // Custom period1/period2 for Yahoo Finance
-    url = `https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/${stock}?period1=${yfRange.from}&period2=${yfRange.to}&interval=${interval}`;
+    url = `${baseUrl}/v8/finance/chart/${stock}?period1=${yfRange.from}&period2=${yfRange.to}&interval=${interval}`;
   } else {
-    url = `https://corsproxy.io/?https://query1.finance.yahoo.com/v8/finance/chart/${stock}?range=${yfRange}&interval=${interval}`;
+    url = `${baseUrl}/v8/finance/chart/${stock}?range=${yfRange}&interval=${interval}`;
   }
   const res = await fetch(url);
   if (!res.ok) throw new Error('API error');

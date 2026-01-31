@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+# Proxy Yahoo Finance API to avoid CORS issues
+[[redirects]]
+  from = "/api/yahoo/*"
+  to = "https://query1.finance.yahoo.com/:splat"
+  status = 200
+  force = true
+
+# Redirect all routes to index.html for React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
