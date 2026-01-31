@@ -442,7 +442,7 @@
   }
   
   .competitor-card {
-    padding: 15px;
+    padding: 10px;
   }
   
   .competitor-header {
@@ -467,7 +467,7 @@
   }
 
   .stock-graph-container {
-    width: 75vw;
+    width: 65vw;
     padding-left: 0px;
     padding-right: 14px;
   }

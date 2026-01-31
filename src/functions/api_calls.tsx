@@ -4,7 +4,7 @@ export async function fetchYahooChartData(
   stock: string,
   yfRange: string | { from: number; to: number },
   interval: string
-): Promise<{ chartData: { time: string; price: number }[]; companyName: string | null; currency: string | null }> {
+): Promise<{ chartData: { time: string; price: number }[]; companyName: string | null; currency: string | null; exchange: string | null }> {
   let url;
   const baseUrl = isDev
     ? 'https://corsproxy.io/?https://query1.finance.yahoo.com'
@@ -24,6 +24,18 @@ export async function fetchYahooChartData(
   const prices = result.indicators.quote[0].close;
   const companyName = result.meta?.shortName || result.meta?.longName || null;
   const currency = result.meta?.currency || null;
+  // Map exchange names to common abbreviations
+  const exchangeMap: { [key: string]: string } = {
+    'TOR': 'TSE',
+    'Toronto': 'TSE',
+    'NYQ': 'NYSE',
+    'NMS': 'NASDAQ',
+    'NGM': 'NASDAQ',
+    'PCX': 'NYSE',
+    'ASE': 'AMEX',
+  };
+  const rawExchange = result.meta?.exchangeName || result.meta?.exchange || null;
+  const exchange = rawExchange ? (exchangeMap[rawExchange] || rawExchange) : null;
   // Format data for recharts
   const chartData = timestamps.map((t: number, i: number) => ({
     time: new Date(t * 1000).toLocaleString(
@@ -34,5 +46,5 @@ export async function fetchYahooChartData(
     ),
     price: prices[i],
   })).filter((d: any) => d.price !== null);
-  return { chartData, companyName, currency };
+  return { chartData, companyName, currency, exchange };
 }

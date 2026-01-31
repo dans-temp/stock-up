@@ -48,6 +48,7 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, stockName, onInvestment
   const [startInvestmentValue, setStartInvestmentValue] = useState<number | null>(null);
   const [companyName, setCompanyName] = useState<string | null>(null);
   const [currency, setCurrency] = useState<string | null>(null);
+  const [exchange, setExchange] = useState<string | null>(null);
   const startInvestmentValueSet = useRef(false);
 
   useEffect(() => {
@@ -82,6 +83,7 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, stockName, onInvestment
         setData(response.chartData);
         setCompanyName(response.companyName);
         setCurrency(response.currency);
+        setExchange(response.exchange);
       } catch (e) {
         setError('Failed to fetch chart data');
         setData([]);
@@ -148,10 +150,9 @@ const StockGraph: React.FC<StockGraphProps> = ({ symbol, stockName, onInvestment
             {(stockName || companyName) && (
               <div style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: '0.2rem' }}>{stockName || companyName}</div>
             )}
-            <div style={{ fontSize: '0.8rem' }}>{symbol.toUpperCase()}</div>
-            {data.length > 1 && data[0]?.price && data[data.length - 1]?.price && (
-              <div style={{ fontSize: '0.8rem', margin: '0.2rem' }}>
-                {data[0].price.toFixed(2)} → {data[data.length - 1].price.toFixed(2)}
+            {data.length > 1 && data[data.length - 1]?.price && (
+              <div style={{ fontSize: '1rem', margin: '0.2rem' }}>
+                {exchange ? `${exchange}: ` : ''}{symbol.split('.')[0].toUpperCase()} {data[data.length - 1].price.toFixed(2)}
               </div>
             )}
           </div>
